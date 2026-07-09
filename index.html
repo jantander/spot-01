@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Быстрая и дешевая GPU рендер-ферма. Тестирование бесплатно. Карты RTX 4090, 3090, 3080 по лучшим ценам. Подключение PCI-E x16 без потерь скорости.">
+  <meta name="keywords" content="рендер ферма, GPU render farm, RTX 4090, RTX 3090, Blender render, Octane, Redshift, Cinema 4D, дешевый рендеринг">
+  <title>GPU Render Farm F1 — Быстрая и Дешевая Рендер-Ферма на ГПУ</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=1.6">
+</head>
+<body class="theme-cyan">
+
+  <!-- Floating Glow Effect Backgrounds -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">F1 <span class="accent-text">RENDER</span></span>
+      </a>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#calculator" data-translate="nav_calculator">Калькулятор</a></li>
+          <li><a href="#nodes" data-translate="nav_nodes">Статус серверов</a></li>
+          <li><a href="#advantages" data-translate="nav_advantages">Преимущества</a></li>
+          <li><a href="#benchmarks" data-translate="nav_benchmarks">Тесты</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <!-- Accent Theme Switcher -->
+        <div class="theme-switcher" title="Сменить цвет акцента">
+          <button class="theme-btn active" data-theme="cyan" style="background-color: #00f2fe;"></button>
+          <button class="theme-btn" data-theme="green" style="background-color: #39ff14;"></button>
+          <button class="theme-btn" data-theme="purple" style="background-color: #b026ff;"></button>
+        </div>
+        
+        <!-- Language Switcher -->
+        <button class="lang-btn" id="langToggle">EN</button>
+        
+        <a href="#modal-test" class="btn btn-primary btn-sm open-modal-btn" data-translate="cta_free_test">Тест-драйв</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="badge-new" data-translate="hero_badge">🔥 Гарантия лучшей цены в СНГ</div>
+        <h1 data-translate="hero_title">Получите 1 час рендеринга бесплатно <br><span class="gradient-text">на RTX 4090</span></h1>
+        <p class="hero-subtitle" data-translate="hero_subtitle">
+          Сверхмощная GPU рендер-ферма с гарантией лучшей цены в СНГ. Полноценная шина PCI-E x16 без задержек. Убедитесь в скорости прямо сейчас!
+        </p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary open-modal-btn" data-translate="hero_cta_primary">Запустить бесплатный тест</button>
+          <a href="#calculator" class="btn btn-secondary" data-translate="hero_cta_secondary">Рассчитать стоимость</a>
+        </div>
+        <div class="hero-features">
+          <div class="hero-feature-item">
+            <span class="feature-icon">🚀</span>
+            <div>
+              <h4 data-translate="feat_1_title">100% PCI-E x16</h4>
+              <p data-translate="feat_1_desc">Без тормозов при загрузке текстур</p>
+            </div>
+          </div>
+          <div class="hero-feature-item">
+            <span class="feature-icon">💎</span>
+            <div>
+              <h4 data-translate="feat_2_title">От 50 руб/час</h4>
+              <p data-translate="feat_2_desc">Найдете дешевле — снизим цену</p>
+            </div>
+          </div>
+          <div class="hero-feature-item">
+            <span class="feature-icon">🛠</span>
+            <div>
+              <h4 data-translate="feat_3_title">Любой софт</h4>
+              <p data-translate="feat_3_desc">Blender, Octane, Redshift и др.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="gpu-card-visual">
+          <div class="gpu-glow"></div>
+          <div class="card-header-gpu">
+            <span class="card-brand">NVIDIA RTX</span>
+            <span class="card-status active"><span class="pulse-dot"></span> LIVE</span>
+          </div>
+          <div class="gpu-name">RTX 4090</div>
+          <div class="gpu-specs-grid">
+            <div class="spec-box">
+              <span class="spec-label">VRAM</span>
+              <span class="spec-val">24 GB G6X</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">CUDA Cores</span>
+              <span class="spec-val">16384</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">PCI-E Bus</span>
+              <span class="spec-val">Gen 4 x16</span>
+            </div>
+            <div class="spec-box">
+              <span class="spec-label">Tensor Cores</span>
+              <span class="spec-val">512</span>
+            </div>
+          </div>
+          <div class="gpu-load-bar-container">
+            <div class="gpu-load-header">
+              <span data-translate="card_render_speed">Скорость рендера</span>
+              <span class="accent-text">100% Max Power</span>
+            </div>
+            <div class="gpu-load-bar"><div class="gpu-load-progress"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Section -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 data-translate="calc_title">Интерактивный калькулятор</h2>
+        <p class="section-subtitle" data-translate="calc_subtitle">Выберите параметры серверов и мгновенно оцените ваш бюджет со скидкой за объем</p>
+      </div>
+      
+      <div class="calc-grid">
+        <div class="calc-inputs-card">
+          <!-- GPU Model selection -->
+          <div class="input-group">
+            <label for="gpuModel" data-translate="calc_label_gpu">Модель видеокарты</label>
+            <select id="gpuModel" class="custom-select">
+              <option value="rtx4090" data-price="100">NVIDIA RTX 4090 (24 GB) — 100 руб/час</option>
+              <option value="rtx3090" data-price="60">NVIDIA RTX 3090 (24 GB) — 60 руб/час</option>
+              <option value="rtx3080" data-price="50">NVIDIA RTX 3080 (10 GB) — 50 руб/час</option>
+            </select>
+          </div>
+          
+          <!-- Number of GPUs -->
+          <div class="input-group">
+            <div class="slider-header">
+              <label for="gpuCount" data-translate="calc_label_gpus_count">Количество видеокарт</label>
+              <span class="slider-value" id="gpuCountVal">4</span>
+            </div>
+            <input type="range" id="gpuCount" min="1" max="16" value="4" class="custom-range">
+            <div class="range-limits">
+              <span>1</span>
+              <span>8</span>
+              <span>16</span>
+            </div>
+          </div>
+          
+          <!-- Number of Hours -->
+          <div class="input-group">
+            <div class="slider-header">
+              <label for="renderHours" data-translate="calc_label_hours">Время рендеринга (в часах)</label>
+              <span class="slider-value" id="renderHoursVal">24</span>
+            </div>
+            <input type="range" id="renderHours" min="1" max="168" value="24" class="custom-range">
+            <div class="range-limits">
+              <span>1 ч</span>
+              <span>72 ч</span>
+              <span>168 ч (Неделя)</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="calc-results-card">
+          <div class="results-header">
+            <h3 data-translate="calc_summary_title">Итоговый расчет</h3>
+            <span class="badge-discount" id="discountBadge" data-translate="calc_no_discount">Скидка 0%</span>
+          </div>
+          
+          <div class="price-display-wrapper">
+            <span class="price-sub" data-translate="calc_price_from">всего за проект</span>
+            <div class="main-price">
+              <span class="price-value" id="totalPrice">9,600</span>
+              <span class="price-currency" id="currencyLabel">₽</span>
+            </div>
+            <span class="hourly-rate-sub" id="hourlyRateText">Сервер (4 x RTX 4090) = 400 ₽ / час</span>
+          </div>
+          
+          <div class="divider"></div>
+          
+          <div class="savings-info">
+            <div class="savings-row">
+              <span class="savings-label" data-translate="calc_base_cost">Базовая стоимость:</span>
+              <span class="savings-val" id="basePrice">9,600 ₽</span>
+            </div>
+            <div class="savings-row highlight">
+              <span class="savings-label" data-translate="calc_savings">Ваша экономия:</span>
+              <span class="savings-val" id="savingsAmount">0 ₽</span>
+            </div>
+          </div>
+          
+          <div class="discount-scale-container">
+            <span class="scale-title" data-translate="calc_discount_scale_title">Шкала оптовых скидок:</span>
+            <div class="scale-bar">
+              <div class="scale-fill" id="discountProgress" style="width: 0%;"></div>
+            </div>
+            <div class="scale-labels">
+              <span>10k ₽ (-10%)</span>
+              <span>30k ₽ (-20%)</span>
+              <span>50k ₽ (-30%)</span>
+            </div>
+          </div>
+          
+          <button class="btn btn-primary btn-block open-modal-btn" data-translate="calc_cta_order">Забронировать мощность</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Server Monitor Section -->
+  <section class="nodes-section" id="nodes">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 data-translate="nodes_title">Мониторинг серверов</h2>
+        <p class="section-subtitle" data-translate="nodes_subtitle">Текущая загрузка оборудования в реальном времени. Все сервера подключены через PCI-E x16.</p>
+      </div>
+      
+      <div class="nodes-grid" id="nodesContainer">
+        <!-- Nodes will be rendered dynamically by JavaScript for realism, with realistic status changes -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Advantages Section -->
+  <section class="advantages-section" id="advantages">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 data-translate="adv_title">Честные х16 линии PCI-E</h2>
+        <p class="section-subtitle" data-translate="adv_subtitle">Почему дешевые фермы от бывших майнеров рендерят медленнее и стоят дороже</p>
+      </div>
+      
+      <div class="advantages-comparison">
+        <div class="comparison-card our-card">
+          <div class="card-tag" data-translate="adv_our_tag">Решение F1 RENDER</div>
+          <h3 data-translate="adv_our_title">Профессиональное железо (х16)</h3>
+          <ul>
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong data-translate="adv_our_l1_title">Прямое подключение в разъем x16:</strong>
+                <span data-translate="adv_our_l1_desc">Пропускная способность до 32 ГБ/с. Сцены загружаются мгновенно.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong data-translate="adv_our_l2_title">Максимальный лимит мощности (TDP):</strong>
+                <span data-translate="adv_our_l2_desc">Никакого даунвольтинга. Карты работают на частотах завода-изготовителя.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong data-translate="adv_our_l3_title">Высокочастотные CPU:</strong>
+                <span data-translate="adv_our_l3_desc">Быстрая подготовка сцены (pre-processing) и кеширование кадров в однопотоке.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="comparison-card competitor-card">
+          <div class="card-tag" data-translate="adv_comp_tag">Типичная майнерская ферма</div>
+          <h3 data-translate="adv_comp_title">Сборки на майнинг-райзерах (х1)</h3>
+          <ul>
+            <li>
+              <span class="icon-cross">✗</span>
+              <div>
+                <strong data-translate="adv_comp_l1_title">Подключение через райзер x1:</strong>
+                <span data-translate="adv_comp_l1_desc">Скорость шины в 16 раз ниже. Огромный боттлнек при загрузке 4К-текстур в память.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-cross">✗</span>
+              <div>
+                <strong data-translate="adv_comp_l2_title">Жесткий даунвольтинг карт:</strong>
+                <span data-translate="adv_comp_l2_desc">Урезание энергопотребления ради экономии розеток снижает чистую скорость на 10-20%.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-cross">✗</span>
+              <div>
+                <strong data-translate="adv_comp_l3_title">Дешевые медленные процессоры:</strong>
+                <span data-translate="adv_comp_l3_desc">Процессор не успевает обрабатывать сцену между кадрами. Видеокарты простаивают.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Mini explainer -->
+      <div class="technical-explainer">
+        <h4 data-translate="adv_exp_title">💡 Как это влияет на ваш бюджет?</h4>
+        <p data-translate="adv_exp_desc">
+          Рендер-фермы с дешевыми видеокартами на райзерах могут стоить на 10% дешевле в час, но из-за медленной шины PCI-E x1 подготовка и рендеринг каждого кадра анимации длится на 30-40% дольше. В итоге вы переплачиваете за общее время аренды и теряете драгоценные часы. У нас вы платите только за чистую, бескомпромиссную скорость.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmarks & Tests Section -->
+  <section class="benchmarks-section" id="benchmarks">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 data-translate="bench_title">Результаты бенчмарков</h2>
+        <p class="section-subtitle" data-translate="bench_subtitle">Сравнение скорости рендеринга тестовых сцен на наших серверах</p>
+      </div>
+      
+      <div class="bench-grid">
+        <!-- Card 1: Blender ClassRoom -->
+        <div class="bench-card">
+          <div class="bench-header">
+            <span class="bench-tag">Blender 4.2</span>
+            <h4>Classroom Scene</h4>
+          </div>
+          <div class="bench-bar-chart">
+            <div class="chart-item">
+              <span class="chart-label">CPU Core i9-14900K (1x)</span>
+              <div class="chart-row">
+                <div class="chart-bar-bg"><div class="chart-fill fill-cpu" style="width: 100%;"></div></div>
+                <span class="chart-time">4:12 мин</span>
+              </div>
+            </div>
+            <div class="chart-item">
+              <span class="chart-label">1 x RTX 3080 (F1)</span>
+              <div class="chart-row">
+                <div class="chart-bar-bg"><div class="chart-fill" style="width: 20%;"></div></div>
+                <span class="chart-time">0:48 сек</span>
+              </div>
+            </div>
+            <div class="chart-item highlight">
+              <span class="chart-label">4 x RTX 4090 (F1 Server)</span>
+              <div class="chart-row">
+                <div class="chart-bar-bg"><div class="chart-fill fill-accent" style="width: 4%;"></div></div>
+                <span class="chart-time">0:09 сек</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Card 2: Octane Render -->
+        <div class="bench-card">
+          <div class="bench-header">
+            <span class="bench-tag">Octane Bench</span>
+            <h4>Pure GPU score</h4>
+          </div>
+          <div class="bench-bar-chart">
+            <div class="chart-item">
+              <span class="chart-label">RTX 3080 (Base)</span>
+              <div class="chart-row">
+                <div class="chart-bar-bg"><div class="chart-fill" style="width: 8%;"></div></div>
+                <span class="chart-time">390 pts</span>
+              </div>
+            </div>
+            <div class="chart-item">
+              <span class="chart-label">RTX 4090 (F1 Single)</span>
+              <div class="chart-row">
+                <div class="chart-bar-bg"><div class="chart-fill" style="width: 25%;"></div></div>
+                <span class="chart-time">1280 pts</span>
+              </div>
+            </div>
+            <div class="chart-item highlight">
+              <span class="chart-label">4 x RTX 4090 (F1 Server)</span>
+              <div class="chart-row">
+                <div class="chart-bar-bg"><div class="chart-fill fill-accent" style="width: 100%;"></div></div>
+                <span class="chart-time">5120 pts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="cta-banner-section">
+    <div class="container text-center">
+      <h2 data-translate="banner_title">Убедитесь в скорости лично</h2>
+      <p data-translate="banner_subtitle">Мы бесплатно предоставим 1 тестовый час на серверах RTX 4090 для замера скорости вашего проекта.</p>
+      <button class="btn btn-primary btn-lg open-modal-btn" data-translate="banner_cta">Начать бесплатный тест</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <a href="#" class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">F1 <span class="accent-text">RENDER</span></span>
+        </a>
+        <p class="footer-desc" data-translate="footer_desc">Профессиональный сервис GPU-рендеринга с гарантией лучшей цены и высокой производительности. Работаем напрямую без посредников.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h4 data-translate="footer_title_links">Навигация</h4>
+        <ul>
+          <li><a href="#calculator" data-translate="nav_calculator">Калькулятор</a></li>
+          <li><a href="#nodes" data-translate="nav_nodes">Статус серверов</a></li>
+          <li><a href="#advantages" data-translate="nav_advantages">Преимущества</a></li>
+          <li><a href="#benchmarks" data-translate="nav_benchmarks">Тесты</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contacts">
+        <h4 data-translate="footer_title_contacts">Контакты и связь</h4>
+        <div class="contact-buttons">
+          <a href="https://t.me/farm_f1" target="_blank" class="contact-btn tg" title="Telegram">
+            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.94-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/></svg>
+            <span>Telegram</span>
+          </a>
+          <a href="https://vk.com/farm_f1" target="_blank" class="contact-btn vk" title="ВКонтакте">
+            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2.4 12.5c-.7.7-1.5 1-2.6 1h-.5c-.4 0-.8-.1-1-.4-.3-.3-.4-.7-.4-1.2v-2.3h-.9c-.4 0-.7.2-.9.5s-.3.7-.3 1.2v.6c0 .4-.1.7-.3.9s-.5.3-.9.3h-.3c-.7 0-1.3-.3-1.8-.8s-.8-1.3-.8-2.3V10c0-.4.1-.7.3-.9s.5-.3.9-.3h.3c.4 0 .7.1.9.3s.3.5.3.9v1.6c0 .4.1.7.3.9s.5.3.9.3h.9V10c0-.4.1-.7.3-.9s.5-.3.9-.3h.3c.4 0 .7.1.9.3s.3.5.3.9v2.8c0 .5-.1.9-.4 1.2-.2.3-.6.5-1 .5h-.5c-1.1 0-1.9-.3-2.6-1z"/></svg>
+            <span>VKontakte</span>
+          </a>
+          <a href="https://wa.me/79955051809" target="_blank" class="contact-btn wa" title="WhatsApp">
+            <svg viewBox="0 0 24 24" class="svg-icon"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.054L2 22l5.103-1.336a9.92 9.92 0 004.905 1.29h.005c5.507 0 9.99-4.478 9.99-9.986 0-2.67-1.037-5.178-2.924-7.065A9.919 9.919 0 0012.012 2zm5.835 14.157c-.244.685-1.2 1.25-1.649 1.293-.448.04-1.012.067-1.637-.132-.387-.123-.88-.306-1.5-.568-2.633-1.114-4.327-3.79-4.46-3.965-.13-.175-1.07-1.425-1.07-2.72 0-1.295.68-1.93.923-2.195.244-.265.534-.33.713-.33h.512c.162 0 .373.003.542.408.175.42.6 1.46.652 1.569.053.11.088.237.014.384-.074.148-.11.237-.222.368-.11.13-.234.29-.333.392-.11.113-.227.237-.097.458.13.22.576.95.1.848.544.484 1.002.744 1.536.963.535.22.846.185.973.037.13-.148.536-.622.682-.833.148-.21.296-.176.496-.102.203.074 1.284.606 1.506.717.222.11.37.165.425.26.056.095.056.55-.188 1.234z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+        <p class="direct-number">Direct: +7 (995) 505-18-09 (Telegram / WhatsApp)</p>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2026 F1 RENDER. All rights reserved. Найдете дешевле — снизим цену.</p>
+    </div>
+  </footer>
+
+  <!-- Lead Capture Modal -->
+  <div class="modal-overlay" id="modalTest">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalClose">&times;</button>
+      
+      <div class="modal-body" id="modalBody">
+        <h3 data-translate="modal_title">Заявка на бесплатный тест</h3>
+        <p class="modal-desc" data-translate="modal_desc">Заполните форму, и мы предоставим вам доступ к серверу с 1 часом бесплатного рендеринга.</p>
+        
+        <form id="leadForm">
+          <div class="form-group">
+            <label for="clientName" data-translate="modal_label_name">Ваше имя</label>
+            <input type="text" id="clientName" required placeholder="Иван" class="form-control">
+          </div>
+          
+          <div class="form-group">
+            <label for="clientContact" data-translate="modal_label_contact">Как с вами связаться? (Telegram / Телефон / Email)</label>
+            <input type="text" id="clientContact" required placeholder="Telegram, WhatsApp, телефон или Email" class="form-control">
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block" data-translate="modal_submit">Отправить заявку</button>
+        </form>
+      </div>
+      
+      <!-- Success View (hidden initially) -->
+      <div class="modal-body success-view" id="modalSuccess" style="display: none;">
+        <div class="success-icon">✓</div>
+        <h3 data-translate="success_title">Заявка успешно отправлена!</h3>
+        <p data-translate="success_desc">Спасибо! Наш технический специалист свяжется с вами в Telegram или WhatsApp в течение 10–15 минут для выдачи доступов.</p>
+        <button class="btn btn-secondary btn-block" id="successCloseBtn" data-translate="success_close">Закрыть окно</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Bottom Bar for Calculator on Mobile -->
+  <div class="calc-sticky-bar" id="calcStickyBar">
+    <div class="sticky-bar-info">
+      <span class="sticky-gpu-info" id="stickyGpuInfo">4 x RTX 4090 • 24 ч</span>
+      <span class="sticky-bar-price" id="stickyPrice">9,600 ₽</span>
+    </div>
+    <button class="btn btn-primary btn-sm open-modal-btn" data-translate="sticky_cta_order">Заказать</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js?v=1.6"></script>
+</body>
+</html>
