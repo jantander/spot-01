@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=1.6">
+  <link rel="stylesheet" href="styles.css?v=1.7">
 </head>
 <body class="theme-cyan">
 
@@ -153,9 +153,9 @@
           <div class="input-group">
             <div class="slider-header">
               <label for="gpuCount" data-translate="calc_label_gpus_count">Количество видеокарт</label>
-              <span class="slider-value" id="gpuCountVal">4</span>
+              <span class="slider-value" id="gpuCountVal">1</span>
             </div>
-            <input type="range" id="gpuCount" min="1" max="16" value="4" class="custom-range">
+            <input type="range" id="gpuCount" min="1" max="16" value="1" class="custom-range">
             <div class="range-limits">
               <span>1</span>
               <span>8</span>
@@ -167,13 +167,13 @@
           <div class="input-group">
             <div class="slider-header">
               <label for="renderHours" data-translate="calc_label_hours">Время рендеринга (в часах)</label>
-              <span class="slider-value" id="renderHoursVal">24</span>
+              <span class="slider-value" id="renderHoursVal">1</span>
             </div>
-            <input type="range" id="renderHours" min="1" max="168" value="24" class="custom-range">
+            <input type="range" id="renderHours" min="1" max="72" value="1" class="custom-range">
             <div class="range-limits">
               <span>1 ч</span>
+              <span>36 ч</span>
               <span>72 ч</span>
-              <span>168 ч (Неделя)</span>
             </div>
           </div>
         </div>
@@ -479,13 +479,13 @@
   <!-- Sticky Bottom Bar for Calculator on Mobile -->
   <div class="calc-sticky-bar" id="calcStickyBar">
     <div class="sticky-bar-info">
-      <span class="sticky-gpu-info" id="stickyGpuInfo">4 x RTX 4090 • 24 ч</span>
-      <span class="sticky-bar-price" id="stickyPrice">9,600 ₽</span>
+      <span class="sticky-gpu-info" id="stickyGpuInfo">1 x RTX 4090 • 1 ч</span>
+      <span class="sticky-bar-price" id="stickyPrice">100 ₽</span>
     </div>
     <button class="btn btn-primary btn-sm open-modal-btn" data-translate="sticky_cta_order">Заказать</button>
   </div>
 
   <!-- Scripts -->
-  <script src="app.js?v=1.6"></script>
+  <script src="app.js?v=1.7"></script>
 </body>
 </html>
