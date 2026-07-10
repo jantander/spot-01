@@ -495,42 +495,24 @@ leadForm.addEventListener('submit', (e) => {
                   `⏱ <i>Отправлено: ${new Date().toLocaleString('ru-RU')}</i>`;
   }
 
-  // Telegram bot config
-  const botToken = '8814805468:AAEnwz0EJ9_KZdJAVaN0D3JTH1jkum1GEBA';
-  const chatId = '1401215177';
+  // Google Apps Script Web App URL (Secure Proxy)
+  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbzZirLWfIlkNG9MVQ3rCMbX0kdsmcQUwWoE1VSXEMuf1cXa1j-VBOF2DQ50cfUqJ2V26Q/exec';
   
-  // Use local proxy port 7897 for bypassing blocks, fallback to direct if proxy is off/fails
-  const useLocalProxy = true;
-  const apiBase = useLocalProxy ? 'http://127.0.0.1:7897' : 'https://api.telegram.org';
-  
-  fetch(`${apiBase}/bot${botToken}/sendMessage`, {
+  fetch(googleScriptUrl, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'text/plain' // Using text/plain to bypass CORS preflight check
+    },
     body: JSON.stringify({
-      chat_id: chatId,
-      text: messageText,
-      parse_mode: 'HTML'
+      message: messageText
     })
   })
   .then(res => res.json())
   .then(data => {
-    console.log('Telegram message sent successfully:', data);
+    console.log('Lead submitted successfully:', data);
   })
   .catch(err => {
-    console.error('Failed to send Telegram message:', err);
-    // If proxy failed, try sending directly as fallback
-    if (useLocalProxy) {
-      console.log('Proxy failed. Trying direct send fallback...');
-      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: messageText,
-          parse_mode: 'HTML'
-        })
-      }).catch(fallbackErr => console.error('Fallback send failed:', fallbackErr));
-    }
+    console.error('Failed to submit lead:', err);
   });
 
   // Transition to success screen inside modal
