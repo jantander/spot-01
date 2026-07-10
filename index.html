@@ -458,7 +458,25 @@
           </div>
           
           <div class="form-group">
-            <label for="clientContact" data-translate="modal_label_contact">Как с вами связаться? (Telegram / Телефон / Email)</label>
+            <label data-translate="modal_label_method">Предпочтительный способ связи</label>
+            <div class="contact-method-selector">
+              <button type="button" class="method-btn active" data-method="telegram">
+                <span>Telegram</span>
+              </button>
+              <button type="button" class="method-btn" data-method="whatsapp">
+                <span>WhatsApp</span>
+              </button>
+              <button type="button" class="method-btn" data-method="phone">
+                <span>Телефон</span>
+              </button>
+              <button type="button" class="method-btn" data-method="email">
+                <span>Email</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="clientContact" id="contactInputLabel">Как с вами связаться?</label>
             <input type="text" id="clientContact" required placeholder="Telegram, WhatsApp, телефон или Email" class="form-control">
           </div>
           

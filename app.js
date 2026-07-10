@@ -76,7 +76,7 @@ const translations = {
     modal_title: "Заявка на бесплатный тест",
     modal_desc: "Заполните форму, и мы предоставим вам доступ к серверу с 1 часом бесплатного рендеринга.",
     modal_label_name: "Ваше имя",
-    modal_label_contact: "Как с вами связаться? (Telegram / Телефон / Email)",
+    modal_label_method: "Предпочтительный способ связи",
     modal_label_email: "Email",
     modal_label_gpu: "Какая карта нужна?",
     modal_label_software: "Ваш 3D софт / Рендерер",
@@ -170,7 +170,7 @@ const translations = {
     modal_title: "Free Test Request",
     modal_desc: "Fill out the form below, and we will set up a server node with 1 free hour of rendering.",
     modal_label_name: "Your Name",
-    modal_label_contact: "How should we contact you? (Telegram / Phone / Email)",
+    modal_label_method: "Preferred contact method",
     modal_label_email: "Email",
     modal_label_gpu: "Requested GPU",
     modal_label_software: "3D Software & Renderer",
@@ -214,6 +214,7 @@ langToggleBtn.addEventListener('click', () => {
   document.documentElement.lang = currentLang;
   
   applyTranslations();
+  updateContactInput(); // Translate the dynamic contact inputs
   calculatePrice(); // Recalculate with new currency values
   renderNodes();    // Refresh nodes text translations
 });
@@ -469,6 +470,17 @@ leadForm.addEventListener('submit', (e) => {
   const clientName = document.getElementById('clientName').value;
   const clientContact = document.getElementById('clientContact').value;
   
+  let methodLabel = '';
+  if (currentLang === 'ru') {
+    methodLabel = selectedMethod === 'telegram' ? 'Telegram' :
+                  selectedMethod === 'whatsapp' ? 'WhatsApp' :
+                  selectedMethod === 'phone' ? 'Телефон' : 'Email';
+  } else {
+    methodLabel = selectedMethod === 'telegram' ? 'Telegram' :
+                  selectedMethod === 'whatsapp' ? 'WhatsApp' :
+                  selectedMethod === 'phone' ? 'Phone' : 'Email';
+  }
+  
   let messageText = '';
   
   if (leadSource === 'calculator') {
@@ -481,7 +493,7 @@ leadForm.addEventListener('submit', (e) => {
     
     messageText = `<b>🔔 Новая заявка на бронирование мощности!</b>\n\n` +
                   `👤 <b>Имя:</b> ${clientName}\n` +
-                  `📞 <b>Контакт:</b> ${clientContact}\n\n` +
+                  `💬 <b>Способ связи (${methodLabel}):</b> ${clientContact}\n\n` +
                   `📊 <b>Выбранная конфигурация:</b>\n` +
                   `• Видеокарта: ${gpu}\n` +
                   `• Количество: ${count} шт.\n` +
@@ -491,7 +503,7 @@ leadForm.addEventListener('submit', (e) => {
   } else {
     messageText = `<b>🎁 Новая заявка на бесплатный тест-драйв!</b>\n\n` +
                   `👤 <b>Имя:</b> ${clientName}\n` +
-                  `📞 <b>Контакт:</b> ${clientContact}\n\n` +
+                  `💬 <b>Способ связи (${methodLabel}):</b> ${clientContact}\n\n` +
                   `⏱ <i>Отправлено: ${new Date().toLocaleString('ru-RU')}</i>`;
   }
 
@@ -542,7 +554,57 @@ if (calculatorSection) {
   observer.observe(calculatorSection);
 }
 
+// 7. Contact Method Selector Logic
+let selectedMethod = 'telegram';
+const methodButtons = document.querySelectorAll('.method-btn');
+const contactInputLabel = document.getElementById('contactInputLabel');
+const clientContactInput = document.getElementById('clientContact');
+
+const contactConfig = {
+  telegram: {
+    ru: { label: "Ваш Telegram (@username или телефон)", placeholder: "@username или +7..." },
+    en: { label: "Your Telegram (@username or phone)", placeholder: "@username or +1..." }
+  },
+  whatsapp: {
+    ru: { label: "Ваш номер для WhatsApp", placeholder: "+7 (999) 000-00-00" },
+    en: { label: "Your WhatsApp number", placeholder: "+1 (555) 000-0000" }
+  },
+  phone: {
+    ru: { label: "Номер телефона для звонка", placeholder: "+7 (999) 000-00-00" },
+    en: { label: "Phone number for call", placeholder: "+1 (555) 000-0000" }
+  },
+  email: {
+    ru: { label: "Ваш адрес Email", placeholder: "example@mail.com" },
+    en: { label: "Your Email address", placeholder: "example@domain.com" }
+  }
+};
+
+methodButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    methodButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedMethod = btn.dataset.method;
+    updateContactInput();
+  });
+});
+
+function updateContactInput() {
+  const config = contactConfig[selectedMethod][currentLang];
+  contactInputLabel.textContent = config.label;
+  clientContactInput.placeholder = config.placeholder;
+  
+  // Update browser autocomplete/keyboard hints dynamically
+  if (selectedMethod === 'email') {
+    clientContactInput.type = 'email';
+  } else if (selectedMethod === 'phone' || selectedMethod === 'whatsapp') {
+    clientContactInput.type = 'tel';
+  } else {
+    clientContactInput.type = 'text';
+  }
+}
+
 // Initializing Layouts & Rates
 applyTranslations();
+updateContactInput();
 calculatePrice();
 renderNodes();
