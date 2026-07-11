@@ -1030,6 +1030,18 @@ body.theme-purple .node-status-badge.rendering {
   font-size: 13px;
   color: var(--text-muted);
 }
+.agency-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+.agency-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-shadow: 0 0 8px var(--accent-glow);
+}
 
 /* Modal Window */
 .modal-overlay {

@@ -72,6 +72,8 @@ const translations = {
     footer_desc: "Профессиональный сервис GPU-рендеринга с гарантией лучшей цены и высокой производительности. Работаем напрямую без посредников.",
     footer_title_links: "Навигация",
     footer_title_contacts: "Контакты и связь",
+    footer_lowest_price: "Найдете дешевле — снизим цену.",
+    footer_agency_watermark: "Сделано в",
     
     modal_title: "Заявка на бесплатный тест",
     modal_desc: "Заполните форму, и мы предоставим вам доступ к серверу с 1 часом бесплатного рендеринга.",
@@ -166,6 +168,8 @@ const translations = {
     footer_desc: "Professional GPU render service with a best price guarantee and top performance. Direct lease, no middlemen.",
     footer_title_links: "Navigation",
     footer_title_contacts: "Get in Touch",
+    footer_lowest_price: "Find it cheaper — we will match it.",
+    footer_agency_watermark: "Made by",
     
     modal_title: "Free Test Request",
     modal_desc: "Fill out the form below, and we will set up a server node with 1 free hour of rendering.",
